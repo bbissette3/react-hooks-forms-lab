@@ -9,12 +9,17 @@ function App() {
 
   function handleDarkModeClick() {
     setIsDarkMode((isDarkMode) => !isDarkMode);
-  }
+  };
+
+  function onItemFormSubmit(newItem) {
+    const newItems = [...items, newItem]
+    setItems(newItems)
+  };
 
   return (
     <div className={"App " + (isDarkMode ? "dark" : "light")}>
       <Header isDarkMode={isDarkMode} onDarkModeClick={handleDarkModeClick} />
-      <ShoppingList items={items} />
+      <ShoppingList items={items} onItemFormSubmit={onItemFormSubmit} />
     </div>
   );
 }
